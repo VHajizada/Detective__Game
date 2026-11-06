@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CASE 001: SEOUL MYSTERY | Cyber-Investigative Terminal</title>
+    <title>CASE 001: SEOUL MYSTERY | Professional Cyber-Terminal</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
@@ -12,10 +12,10 @@
     <div class="scanlines"></div>
     <div class="ambient-glow"></div>
 
-    <!-- CINEMATIC MAIN MENU -->
+    <!-- MAIN MENU -->
     <section id="main-menu" class="screen active">
         <div class="hero-container">
-            <div class="classification-tag">GANGNAM POLICE HQ // SECURE CLASSIFIED TERMINAL v4.2</div>
+            <div class="classification-tag">GANGNAM POLICE HQ // SECURE CLASSIFIED TERMINAL v5.0</div>
             <h1 class="glitch-title" data-text="CASE 001: SEOUL MYSTERY">CASE 001<br><span class="accent-red">SEOUL MYSTERY</span></h1>
             <p class="cyber-tagline">"Every forensic trace tells a silent story. Every alibi is engineered to conceal the truth."</p>
             
@@ -31,7 +31,7 @@
         </div>
     </section>
 
-    <!-- OPERATIONAL MANUAL / HOW TO PLAY MODAL -->
+    <!-- OPERATIONAL MANUAL MODAL -->
     <div id="rules-modal" class="cyber-modal">
         <div class="modal-window">
             <div class="modal-header">
@@ -41,7 +41,7 @@
             <div class="modal-body-scroll">
                 <div class="rule-step">
                     <h4>1. Crime Scene Forensics</h4>
-                    <p>Navigate to the <strong>Crime Scene</strong> tab and inspect high-risk interactive hotspots across Kang Min-jun's office. Collect physical and digital evidence items.</p>
+                    <p>Navigate to the <strong>Crime Scene Lab</strong> tab and inspect high-risk interactive hotspots across Kang Min-jun's office to secure critical physical and digital evidence.</p>
                 </div>
                 <div class="rule-step">
                     <h4>2. Suspect Interrogation & Alibis</h4>
@@ -49,17 +49,17 @@
                 </div>
                 <div class="rule-step">
                     <h4>3. Forensic Puzzles & Decryption</h4>
-                    <p>Solve encrypted communication ciphers and reconstruct corrupted security timeline logs in the <strong>Puzzles</strong> sector to unlock critical hidden clues.</p>
+                    <p>Solve encrypted communication ciphers in the <strong>Encryption & Puzzles</strong> sector to unlock hidden database logs.</p>
                 </div>
                 <div class="rule-step">
                     <h4>4. Final Accusation Protocol</h4>
-                    <p>Once sufficient evidence (at least 6+ items) is secured, access the <strong>Final Accusation</strong> terminal to submit the perpetrator, motive, escape vector, and supporting evidence.</p>
+                    <p>Once sufficient evidence is secured, access the <strong>Final Accusation</strong> terminal to submit the perpetrator, motive, escape vector, and close the case.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- INVESTIGATION DASHBOARD WORKSPACE -->
+    <!-- INVESTIGATION DASHBOARD -->
     <section id="dashboard" class="screen">
         <header class="telemetry-bar">
             <div class="telemetry-group">
@@ -70,12 +70,11 @@
             <div class="telemetry-group">
                 <span class="tele-badge">EVIDENCE SECURED: <strong id="evidence-count">0/8</strong></span>
                 <span class="tele-badge score">INVESTIGATION RATING: <strong id="score-display">1000 XP</strong></span>
-                <button id="audio-toggle" class="cyber-btn-small">🔊 AUDIO: ON</button>
             </div>
         </header>
 
         <div class="workspace-layout">
-            <!-- SIDEBAR NAVIGATION -->
+            <!-- SIDEBAR -->
             <nav class="cyber-sidebar">
                 <div class="nav-header">INVESTIGATION SECTORS</div>
                 <button class="nav-link active" data-tab="overview"><span class="icon">📊</span> Overview & Objectives</button>
@@ -87,7 +86,7 @@
                 <button class="nav-link accuse-link" data-tab="accusation"><span class="icon">⚖️</span> Final Accusation</button>
             </nav>
 
-            <!-- MAIN WORKSPACE CONTENT -->
+            <!-- MAIN WORKSPACE -->
             <main class="cyber-content-viewport">
                 <!-- OVERVIEW TAB -->
                 <div id="tab-overview" class="tab-pane active">
@@ -104,10 +103,10 @@
                         <div class="cyber-card">
                             <h3>🎯 Active Objectives</h3>
                             <ul class="task-checklist">
-                                <li id="task-1">[ ] Investigate all 8 crime scene interactive hotspots.</li>
-                                <li id="task-2">[ ] Review suspect alibis and psychological dossiers.</li>
-                                <li id="task-3">[ ] Decode the encrypted message in the cipher module.</li>
-                                <li id="task-4">[ ] File final accusation and determine Kang Min-jun's whereabouts.</li>
+                                <li>[ ] Investigate all 8 crime scene interactive hotspots.</li>
+                                <li>[ ] Review suspect alibis and psychological dossiers.</li>
+                                <li>[ ] Decode the encrypted message in the cipher module.</li>
+                                <li>[ ] File final accusation and determine Kang Min-jun's whereabouts.</li>
                             </ul>
                         </div>
                     </div>
@@ -121,7 +120,6 @@
                     <div class="crime-scene-container">
                         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80" alt="Crime Scene Office" class="scene-image">
                         
-                        <!-- HOTSPOTS -->
                         <div class="forensic-hotspot" style="top: 68%; left: 32%;" data-evidence="phone" title="Broken Smartphone">📱</div>
                         <div class="forensic-hotspot" style="top: 75%; left: 52%;" data-evidence="coffee" title="Coffee Cup">☕</div>
                         <div class="forensic-hotspot" style="top: 55%; left: 48%;" data-evidence="laptop" title="Open Work Laptop">💻</div>
@@ -136,18 +134,14 @@
                 <!-- SUSPECTS TAB -->
                 <div id="tab-suspects" class="tab-pane">
                     <h2 class="section-title">SUSPECT DOSSIERS & PSYCHOLOGICAL PROFILES</h2>
-                    <div class="suspects-grid" id="suspects-grid-container">
-                        <!-- Populated via JS -->
-                    </div>
+                    <div class="suspects-grid" id="suspects-grid-container"></div>
                 </div>
 
                 <!-- WITNESS INTERVIEWS TAB -->
                 <div id="tab-interviews" class="tab-pane">
                     <h2 class="section-title">INTERROGATION TRANSCRIPTS & WITNESS LOGS</h2>
                     <div class="interrogation-layout">
-                        <div class="witness-list-panel" id="witness-list">
-                            <!-- Populated via JS -->
-                        </div>
+                        <div class="witness-list-panel" id="witness-list"></div>
                         <div class="interrogation-console" id="interrogation-console">
                             <div class="console-prompt-msg">Select a person from the left panel to begin formal interrogation.</div>
                         </div>
@@ -159,7 +153,7 @@
                     <h2 class="section-title">SECURE EVIDENCE REGISTRY & CORKBOARD</h2>
                     <p class="instruction-sub">All artifacts secured during investigation:</p>
                     <div class="evidence-registry-grid" id="evidence-registry-grid">
-                        <!-- Populated via JS -->
+                        <p style="color: var(--text-muted);">No evidence secured yet. Visit the Crime Scene Lab.</p>
                     </div>
                 </div>
 
@@ -222,16 +216,14 @@
         </div>
     </section>
 
-    <!-- EVIDENCE INSPECT MODAL -->
+    <!-- EVIDENCE MODAL -->
     <div id="evidence-modal" class="cyber-modal">
         <div class="modal-window">
             <div class="modal-header">
                 <h3 id="modal-item-title">Artifact Inspection</h3>
                 <span class="close-evidence-modal">&times;</span>
             </div>
-            <div class="modal-body-content" id="modal-item-body">
-                <!-- Populated via JS -->
-            </div>
+            <div class="modal-body-content" id="modal-item-body"></div>
         </div>
     </div>
 
