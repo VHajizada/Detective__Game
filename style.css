@@ -147,15 +147,6 @@ body {
     box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
 }
 
-.cyber-btn-small {
-    background: transparent;
-    border: 1px solid var(--border-cyber);
-    color: var(--accent-cyan);
-    padding: 6px 12px;
-    cursor: pointer;
-    font-family: 'Share Tech Mono', monospace;
-}
-
 /* INCIDENT BRIEFING */
 .incident-briefing-card {
     background: rgba(5, 7, 10, 0.9);
