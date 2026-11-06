@@ -1,4 +1,3 @@
-// GAME ENGINE & STATE MANAGEMENT
 const GameState = {
     score: 1000,
     evidenceCollected: [],
@@ -31,7 +30,6 @@ const WitnessesData = [
     { id: "taxi", name: "Taxi Driver (Song Jin-woo)", statement: "I picked up a distressed man carrying a heavy duffel bag near the rear service exit of the Gangnam tower around 11:55 PM, heading towards Incheon Port." }
 ];
 
-// INITIALIZATION
 document.addEventListener("DOMContentLoaded", () => {
     initNavigation();
     renderSuspects();
@@ -42,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initRulesModal();
 });
 
-// NAVIGATION & MODALS
 function initNavigation() {
     const btnStart = document.getElementById("btn-start");
     const mainMenu = document.getElementById("main-menu");
@@ -78,7 +75,6 @@ function initRulesModal() {
     closeRules.addEventListener("click", () => { modal.style.display = "none"; });
 }
 
-// CRIME SCENE HOTSPOTS
 function initCrimeSceneHotspots() {
     const hotspots = document.querySelectorAll(".forensic-hotspot");
     const modal = document.getElementById("evidence-modal");
@@ -115,8 +111,11 @@ function collectEvidenceItem(key, item) {
         GameState.evidenceCollected.push(key);
         document.getElementById("evidence-count").innerText = `${GameState.evidenceCollected.length}/${GameState.totalEvidence}`;
         
-        // Add to Evidence Registry Tab
         const grid = document.getElementById("evidence-registry-grid");
+        if (GameState.evidenceCollected.length === 1) {
+            grid.innerHTML = ""; // Clear placeholder
+        }
+
         const card = document.createElement("div");
         card.className = "evidence-item-card";
         card.innerHTML = `<h4>📌 ${item.title}</h4><p style="font-size:0.9rem; color:var(--text-muted); margin-top:8px;">${item.desc}</p>`;
@@ -128,7 +127,6 @@ function collectEvidenceItem(key, item) {
     }
 }
 
-// SUSPECTS
 function renderSuspects() {
     const container = document.getElementById("suspects-grid-container");
     container.innerHTML = "";
@@ -147,7 +145,6 @@ function renderSuspects() {
     });
 }
 
-// WITNESS INTERVIEWS
 function renderWitnesses() {
     const listContainer = document.getElementById("witness-list");
     const consoleContainer = document.getElementById("interrogation-console");
@@ -172,7 +169,6 @@ function renderWitnesses() {
     });
 }
 
-// PUZZLES (CIPHER)
 function initPuzzles() {
     const btn = document.getElementById("btn-verify-cipher");
     const input = document.getElementById("cipher-input-box");
@@ -189,7 +185,6 @@ function initPuzzles() {
     });
 }
 
-// FINAL ACCUSATION FORM
 function initAccusationForm() {
     const form = document.getElementById("final-accusation-form");
 
