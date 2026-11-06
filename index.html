@@ -1,180 +1,220 @@
+
 <!DOCTYPE html>
-<html lang="az">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CASE 001: SEOUL MYSTERY</title>
+    <title>CASE 001: SEOUL MYSTERY | Cyber-Investigative Terminal</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
-<body class="dark-theme">
-    <div id="rain-container"></div>
-    <div id="vignette-overlay"></div>
+<body class="terminal-body">
+    <div class="scanlines"></div>
+    <div class="ambient-glow"></div>
 
-    <!-- MAIN MENU -->
+    <!-- CINEMATIC MAIN MENU -->
     <section id="main-menu" class="screen active">
-        <div class="neon-title-container">
-            <div class="subtitle">POLICE INVESTIGATION DATABASE // GANGNAM HQ</div>
-            <h1 class="glitch-title" data-text="CASE 001: SEOUL MYSTERY">CASE 001<br><span class="highlight">SEOUL MYSTERY</span></h1>
-            <p class="tagline">"Hər bir ipucu bir hekayə danışır. Hər bir yalan həqiqəti gizlədir."</p>
-        </div>
-        
-        <div class="menu-actions">
-            <button id="btn-start" class="btn btn-primary"><span class="icon">🔍</span> İSTİNTAQA BAŞLA</button>
-            <button id="btn-how" class="btn btn-secondary"><span class="icon">📋</span> OYUN QAYDALARI</button>
-        </div>
-        
-        <div class="case-teaser">
-            <div class="badge">TƏCİLİ MƏLUMAT</div>
-            <p><strong>05 Noyabr 2026, 23:47:</strong> Şəbəkə texnologiyaları üzrə milyarder Kang Min-jun Gangnamdakı şəxsi ofisindən sirli şəkildə qeyb olub. Otaq daxildən kilitlənib.</p>
+        <div class="hero-container">
+            <div class="classification-tag">GANGNAM POLICE HQ // SECURE CLASSIFIED TERMINAL v4.2</div>
+            <h1 class="glitch-title" data-text="CASE 001: SEOUL MYSTERY">CASE 001<br><span class="accent-red">SEOUL MYSTERY</span></h1>
+            <p class="cyber-tagline">"Every forensic trace tells a silent story. Every alibi is engineered to conceal the truth."</p>
+            
+            <div class="menu-action-grid">
+                <button id="btn-start" class="cyber-btn primary"><span class="icon">⚡</span> INITIALIZE INVESTIGATION</button>
+                <button id="btn-rules" class="cyber-btn secondary"><span class="icon">📖</span> OPERATIONAL MANUAL</button>
+            </div>
+
+            <div class="incident-briefing-card">
+                <div class="card-header">🔴 INCIDENT BRIEFING // 05 NOV 2026, 23:47 KST</div>
+                <p>Renowned South Korean tech entrepreneur <strong>Kang Min-jun</strong> vanished under impossible circumstances from his 14th-floor executive suite in Gangnam. The perimeter was locked from the inside. Security logs display a 12-minute blackout.</p>
+            </div>
         </div>
     </section>
 
-    <!-- DASHBOARD WORKSPACE -->
+    <!-- OPERATIONAL MANUAL / HOW TO PLAY MODAL -->
+    <div id="rules-modal" class="cyber-modal">
+        <div class="modal-window">
+            <div class="modal-header">
+                <h3>📖 OPERATIONAL MANUAL (HOW TO PLAY)</h3>
+                <span class="close-rules">&times;</span>
+            </div>
+            <div class="modal-body-scroll">
+                <div class="rule-step">
+                    <h4>1. Crime Scene Forensics</h4>
+                    <p>Navigate to the <strong>Crime Scene</strong> tab and inspect high-risk interactive hotspots across Kang Min-jun's office. Collect physical and digital evidence items.</p>
+                </div>
+                <div class="rule-step">
+                    <h4>2. Suspect Interrogation & Alibis</h4>
+                    <p>Analyze the psychological profiles and testimonies of the 4 prime suspects. Cross-examine their timelines to uncover contradictions and fabricated alibis.</p>
+                </div>
+                <div class="rule-step">
+                    <h4>3. Forensic Puzzles & Decryption</h4>
+                    <p>Solve encrypted communication ciphers and reconstruct corrupted security timeline logs in the <strong>Puzzles</strong> sector to unlock critical hidden clues.</p>
+                </div>
+                <div class="rule-step">
+                    <h4>4. Final Accusation Protocol</h4>
+                    <p>Once sufficient evidence (at least 6+ items) is secured, access the <strong>Final Accusation</strong> terminal to submit the perpetrator, motive, escape vector, and supporting evidence.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INVESTIGATION DASHBOARD WORKSPACE -->
     <section id="dashboard" class="screen">
-        <header class="top-bar">
-            <div class="case-meta">
-                <span class="meta-item"><strong>CASE:</strong> #001-SEOUL</span>
-                <span class="meta-item"><strong>MƏKAN:</strong> Gangnam, Seul</span>
-                <span class="meta-item"><strong>ZAMAN:</strong> 23:47</span>
+        <header class="telemetry-bar">
+            <div class="telemetry-group">
+                <span class="tele-item"><span class="label">CASE:</span> #001-SEOUL</span>
+                <span class="tele-item"><span class="label">LOCATION:</span> Gangnam Executive Tower</span>
+                <span class="tele-item"><span class="label">TIMESTAMP:</span> 23:47 KST</span>
             </div>
-            <div class="stat-tracker">
-                <span class="badge-counter">SÜBÜTLAR: <strong id="evidence-count">0/12</strong></span>
-                <span class="badge-counter">XP: <strong id="score-display">1000</strong></span>
+            <div class="telemetry-group">
+                <span class="tele-badge">EVIDENCE SECURED: <strong id="evidence-count">0/8</strong></span>
+                <span class="tele-badge score">INVESTIGATION RATING: <strong id="score-display">1000 XP</strong></span>
+                <button id="audio-toggle" class="cyber-btn-small">🔊 AUDIO: ON</button>
             </div>
-            <button id="btn-sound-toggle" class="btn-icon">🔊 SƏS</button>
         </header>
 
-        <div class="app-layout">
-            <!-- NAV SIDEBAR -->
-            <nav class="sidebar">
-                <div class="nav-title">İSTİNTAQ PANOLARI</div>
-                <button class="nav-btn active" data-tab="overview"><span class="nav-icon">📊</span> Ümumi Baxış</button>
-                <button class="nav-btn" data-tab="crime-scene"><span class="nav-icon">📸</span> Hadisə Yeri</button>
-                <button class="nav-btn" data-tab="suspects"><span class="nav-icon">👥</span> Şübhəlilər</button>
-                <button class="nav-btn" data-tab="interviews"><span class="nav-icon">🎙️</span> Dindirmələr</button>
-                <button class="nav-btn" data-tab="evidence-room"><span class="nav-icon">📑</span> Sübüt Lövhəsi</button>
-                <button class="nav-btn" data-tab="minigames"><span class="nav-icon">🧩</span> Pazzllar və Analiz</button>
-                <button class="nav-btn highlight-accuse" data-tab="accusation"><span class="nav-icon">⚖️</span> YEKUN İTTİHAM</button>
+        <div class="workspace-layout">
+            <!-- SIDEBAR NAVIGATION -->
+            <nav class="cyber-sidebar">
+                <div class="nav-header">INVESTIGATION SECTORS</div>
+                <button class="nav-link active" data-tab="overview"><span class="icon">📊</span> Overview & Objectives</button>
+                <button class="nav-link" data-tab="crime-scene"><span class="icon">🔍</span> Crime Scene Lab</button>
+                <button class="nav-link" data-tab="suspects"><span class="icon">👤</span> Suspect Profiles</button>
+                <button class="nav-link" data-tab="interviews"><span class="icon">💬</span> Witness Interrogations</button>
+                <button class="nav-link" data-tab="evidence-room"><span class="icon">🗂️</span> Evidence Registry</button>
+                <button class="nav-link" data-tab="puzzles"><span class="icon">🔐</span> Encryption & Puzzles</button>
+                <button class="nav-link accuse-link" data-tab="accusation"><span class="icon">⚖️</span> Final Accusation</button>
             </nav>
 
-            <!-- MAIN WORKSPACE VIEWS -->
-            <main class="content-area">
-                <!-- TAB 1: OVERVIEW -->
-                <div id="tab-overview" class="tab-content active">
-                    <h2>İstintaq İcmalı: Kang Min-jun-un İtməsi</h2>
-                    <div class="grid-2">
-                        <div class="card card-red">
-                            <h3>⚠️ Hadisə Haqqında Raport</h3>
-                            <p>Kang Min-jun (38 yaş, "Nexus Tech" şirkətinin təsisçisi) noyabrın 5-də saat 23:47-də özünün 14-cü mərtəbədəki ofisindən yoxa çıxıb. Qapı və pəncərələr daxildən kilitli olub. Kamera yazılarında 12 dəqiqəlik kəsinti mövcuddur.</p>
+            <!-- MAIN WORKSPACE CONTENT -->
+            <main class="cyber-content-viewport">
+                <!-- OVERVIEW TAB -->
+                <div id="tab-overview" class="tab-pane active">
+                    <h2 class="section-title">CASE 001 // MASTER INVESTIGATION OVERVIEW</h2>
+                    <div class="dashboard-grid">
+                        <div class="cyber-card highlight-border">
+                            <h3>🚨 Incident Case Summary</h3>
+                            <p>At 23:47 KST, Nexus Tech founder Kang Min-jun disappeared from his private office. The security mechanisms indicate zero electronic override or forced entry. A sophisticated insider operation is suspected.</p>
+                            <div class="stat-row" style="margin-top: 15px;">
+                                <span>Threat Level: <strong class="text-red">CRITICAL</strong></span>
+                                <span>Security Clearance: <strong class="text-cyan">LEVEL 4</strong></span>
+                            </div>
                         </div>
-                        <div class="card">
-                            <h3>🎯 Əsas Məqsədlər</h3>
-                            <ul class="task-list">
-                                <li>[ ] Hadisə yerindəki 8 kritik nöqtəni araşdırın.</li>
-                                <li>[ ] 4 şübhəlinin alibisini dindirmələrlə yoxlayın.</li>
-                                <li>[ ] Şifrələnmiş mesajı və kamera yazısını bərpa edin.</li>
-                                <li>[ ] Təqsirkarı və onun motivini müəyyən edərək yekun ittiham irəli sürün.</li>
+                        <div class="cyber-card">
+                            <h3>🎯 Active Objectives</h3>
+                            <ul class="task-checklist">
+                                <li id="task-1">[ ] Investigate all 8 crime scene interactive hotspots.</li>
+                                <li id="task-2">[ ] Review suspect alibis and psychological dossiers.</li>
+                                <li id="task-3">[ ] Decode the encrypted message in the cipher module.</li>
+                                <li id="task-4">[ ] File final accusation and determine Kang Min-jun's whereabouts.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- TAB 2: CRIME SCENE -->
-                <div id="tab-crime-scene" class="tab-content">
-                    <h2>İnteraktiv Hadisə Yeri: Gangnam Ofisi</h2>
-                    <p class="hint">Əşyaları araşdırmaq və sübut toplamaq üçün ofisdəki qırmızı nöqtələrə klikləyin:</p>
+                <!-- CRIME SCENE TAB -->
+                <div id="tab-crime-scene" class="tab-pane">
+                    <h2 class="section-title">GANGNAM EXECUTIVE OFFICE // CRIME SCENE SCANNER</h2>
+                    <p class="instruction-sub">Click glowing forensic markers to examine physical evidence artifacts:</p>
                     
-                    <div class="crime-scene-viewport">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" alt="Office Scene" class="scene-bg">
+                    <div class="crime-scene-container">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80" alt="Crime Scene Office" class="scene-image">
                         
                         <!-- HOTSPOTS -->
-                        <div class="hotspot" style="top: 65%; left: 35%;" data-item="phone">📱</div>
-                        <div class="hotspot" style="top: 72%; left: 48%;" data-item="coffee">☕</div>
-                        <div class="hotspot" style="top: 55%; left: 50%;" data-item="laptop">💻</div>
-                        <div class="hotspot" style="top: 20%; left: 75%;" data-item="clock">🕒</div>
-                        <div class="hotspot" style="top: 15%; left: 20%;" data-item="camera">🎥</div>
-                        <div class="hotspot" style="top: 40%; left: 85%;" data-item="window">🪟</div>
-                        <div class="hotspot" style="top: 60%; left: 62%;" data-item="note">📝</div>
+                        <div class="forensic-hotspot" style="top: 68%; left: 32%;" data-evidence="phone" title="Broken Smartphone">📱</div>
+                        <div class="forensic-hotspot" style="top: 75%; left: 52%;" data-evidence="coffee" title="Coffee Cup">☕</div>
+                        <div class="forensic-hotspot" style="top: 55%; left: 48%;" data-evidence="laptop" title="Open Work Laptop">💻</div>
+                        <div class="forensic-hotspot" style="top: 22%; left: 78%;" data-evidence="clock" title="Smashed Wall Clock">🕒</div>
+                        <div class="forensic-hotspot" style="top: 12%; left: 18%;" data-evidence="camera" title="Security Camera Unit">🎥</div>
+                        <div class="forensic-hotspot" style="top: 38%; left: 88%;" data-evidence="window" title="Sealed Window">🪟</div>
+                        <div class="forensic-hotspot" style="top: 62%; left: 65%;" data-evidence="note" title="Handwritten Note">📝</div>
+                        <div class="forensic-hotspot" style="top: 80%; left: 20%;" data-evidence="safe" title="Wall Safe">🔐</div>
                     </div>
                 </div>
 
-                <!-- TAB 3: SUSPECTS -->
-                <div id="tab-suspects" class="tab-content">
-                    <h2>Şübhəli Şəxslərin Faylları</h2>
-                    <div class="suspects-grid" id="suspects-container">
-                        <!-- JS populated -->
+                <!-- SUSPECTS TAB -->
+                <div id="tab-suspects" class="tab-pane">
+                    <h2 class="section-title">SUSPECT DOSSIERS & PSYCHOLOGICAL PROFILES</h2>
+                    <div class="suspects-grid" id="suspects-grid-container">
+                        <!-- Populated via JS -->
                     </div>
                 </div>
 
-                <!-- TAB 4: INTERVIEWS -->
-                <div id="tab-interviews" class="tab-content">
-                    <h2>Şahid və Şübhəli Dindirmələri</h2>
-                    <div class="interview-layout">
-                        <div class="witness-selector" id="witness-list">
-                            <!-- JS populated -->
+                <!-- WITNESS INTERVIEWS TAB -->
+                <div id="tab-interviews" class="tab-pane">
+                    <h2 class="section-title">INTERROGATION TRANSCRIPTS & WITNESS LOGS</h2>
+                    <div class="interrogation-layout">
+                        <div class="witness-list-panel" id="witness-list">
+                            <!-- Populated via JS -->
                         </div>
-                        <div class="dialogue-box" id="dialogue-container">
-                            <p class="select-prompt">Dindirməyə başlamaq üçün soldan bir şəxs seçin.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TAB 5: EVIDENCE ROOM -->
-                <div id="tab-evidence-room" class="tab-content">
-                    <h2>Sübut Lövhəsi (Pin-Board)</h2>
-                    <p class="hint">Toplanmış sübutların siyahısı və aralarındakı əlaqələr:</p>
-                    <div class="evidence-grid" id="evidence-container">
-                        <!-- JS populated -->
-                    </div>
-                </div>
-
-                <!-- TAB 6: MINIGAMES -->
-                <div id="tab-minigames" class="tab-content">
-                    <h2>Kriminalistik Analiz və Pazzllar</h2>
-                    <div class="puzzle-container">
-                        <div class="card">
-                            <h3>🔐 Şifrələnmiş Kodun Açılması (Cipher)</h3>
-                            <p>Kang Min-jun-un telefonundan tapılan şifrəli mesaj:</p>
-                            <div class="cipher-box">"45-12-89-01 // PROJECT-NEXUS-DRAIN"</div>
-                            <input type="text" id="cipher-input" placeholder="Dəşifrə edilmiş kodu daxil edin (Hərflər/Rəqəmlər)...">
-                            <button id="btn-check-cipher" class="btn btn-primary" style="margin-top:10px;">ŞİFRƏNİ YOXLAYIN</button>
-                            <div id="cipher-feedback" class="feedback"></div>
+                        <div class="interrogation-console" id="interrogation-console">
+                            <div class="console-prompt-msg">Select a person from the left panel to begin formal interrogation.</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- TAB 7: ACCUSATION -->
-                <div id="tab-accusation" class="tab-content">
-                    <h2>Məhkəmə Öncesi Yekun İttiham İrəli Sürün</h2>
-                    <div class="card card-red">
-                        <form id="accusation-form">
-                            <label>1. Əsas Təqsirkar Kimdir?</label>
-                            <select id="accuse-suspect" required>
-                                <option value="">-- Şübhəlini Seçin --</option>
-                                <option value="kim">Kim Seo-yeon (Şəxsi Köməkçi)</option>
-                                <option value="park">Park Ji-hoon (Biznes Şəriki)</option>
-                                <option value="lee">Lee Hye-jin (Jurnalist)</option>
-                                <option value="choi">Choi Dae-hyun (Təhlükəsizlik Rəisi)</option>
-                            </select>
+                <!-- EVIDENCE ROOM TAB -->
+                <div id="tab-evidence-room" class="tab-pane">
+                    <h2 class="section-title">SECURE EVIDENCE REGISTRY & CORKBOARD</h2>
+                    <p class="instruction-sub">All artifacts secured during investigation:</p>
+                    <div class="evidence-registry-grid" id="evidence-registry-grid">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
 
-                            <label>2. Əsas Cinayət Motivi Nə İdi?</label>
-                            <select id="accuse-motive" required>
-                                <option value="">-- Motivi Seçin --</option>
-                                <option value="money">Maliyyə mənimsəməsi və gizli kripto-aktivlər</option>
-                                <option value="revenge">Şəxsi qisas və tərəfdaşlıq xəyanəti</option>
-                                <option value="journalism">Skandal xəbər hazırlamaq</option>
-                            </select>
+                <!-- PUZZLES TAB -->
+                <div id="tab-puzzles" class="tab-pane">
+                    <h2 class="section-title">FORENSIC DECRYPTION & CYBER ANALYSIS</h2>
+                    <div class="puzzles-grid">
+                        <div class="cyber-card">
+                            <h3>🔐 Sub-Net Cipher Decryption Module</h3>
+                            <p>Encrypted packet recovered from Kang Min-jun's mobile device memory buffer:</p>
+                            <div class="cipher-display-box">"45-12-89-01 // PROJECT-NEXUS-DRAIN"</div>
+                            <input type="text" id="cipher-input-box" class="cyber-input" placeholder="Enter decryption phrase or protocol key...">
+                            <button id="btn-verify-cipher" class="cyber-btn primary" style="width:100%; margin-top:10px;">EXECUTE DECRYPTION</button>
+                            <div id="cipher-status-feedback" class="feedback-msg"></div>
+                        </div>
+                    </div>
+                </div>
 
-                            <label>3. Kang Min-jun Hazırda Haradadır?</label>
-                            <select id="accuse-location" required>
-                                <option value="">-- Məkanı Seçin --</option>
-                                <option value="basement">Incheon Limanındakı Gizli Anbarda</option>
-                                <option value="safehouse">Gangnamdakı Yeraltı Bunker-də</option>
-                                <option value="abroad">Xarici ölkəyə qaçıb</option>
-                            </select>
+                <!-- ACCUSATION TAB -->
+                <div id="tab-accusation" class="tab-pane">
+                    <h2 class="section-title">FINAL CASE ACCUSATION & JUDICIAL SUBMISSION</h2>
+                    <div class="cyber-card highlight-border-red">
+                        <form id="final-accusation-form">
+                            <div class="form-group">
+                                <label>1. Primary Responsible Suspect:</label>
+                                <select id="accuse-suspect" class="cyber-select" required>
+                                    <option value="">-- Select Prime Suspect --</option>
+                                    <option value="kim">Kim Seo-yeon (Personal Assistant)</option>
+                                    <option value="park">Park Ji-hoon (Business Partner)</option>
+                                    <option value="lee">Lee Hye-jin (Investigative Journalist)</option>
+                                    <option value="choi">Choi Dae-hyun (Head of Security)</option>
+                                </select>
+                            </div>
 
-                            <button type="submit" class="btn btn-primary btn-large" style="margin-top:20px;">HƏKMİ VƏ İTTİHAMI TƏSDİQLƏ</button>
+                            <div class="form-group">
+                                <label>2. Primary Motive for Disappearance:</label>
+                                <select id="accuse-motive" class="cyber-select" required>
+                                    <option value="">-- Select Confirmed Motive --</option>
+                                    <option value="money">Embezzlement of offshore cryptocurrency reserves</option>
+                                    <option value="revenge">Personal vendetta and partnership betrayal</option>
+                                    <option value="journalism">Suppressing corporate corruption leaks</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>3. Current Location of Kang Min-jun:</label>
+                                <select id="accuse-location" class="cyber-select" required>
+                                    <option value="">-- Select Location --</option>
+                                    <option value="basement">Incheon Port Underground Container Storage #4</option>
+                                    <option value="safehouse">Gangnam Secret Residential Bunker</option>
+                                    <option value="abroad">Escaped via Private Charter to Southeast Asia</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="cyber-btn primary btn-glow" style="width:100%; margin-top:20px; padding: 16px;">SUBMIT CASE VERDICT & CLOSE INVESTIGATION</button>
                         </form>
                     </div>
                 </div>
@@ -182,12 +222,16 @@
         </div>
     </section>
 
-    <!-- MODALS -->
-    <div id="modal" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h3 id="modal-title">Sübut Analizi</h3>
-            <div id="modal-body"></div>
+    <!-- EVIDENCE INSPECT MODAL -->
+    <div id="evidence-modal" class="cyber-modal">
+        <div class="modal-window">
+            <div class="modal-header">
+                <h3 id="modal-item-title">Artifact Inspection</h3>
+                <span class="close-evidence-modal">&times;</span>
+            </div>
+            <div class="modal-body-content" id="modal-item-body">
+                <!-- Populated via JS -->
+            </div>
         </div>
     </div>
 
