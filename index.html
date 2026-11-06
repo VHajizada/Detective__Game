@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASE 001: SEOUL MYSTERY</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div id="rain-container"></div>
+    <div id="vignette-overlay"></div>
+
+    <!-- MAIN MENU -->
+    <section id="main-menu" class="screen active">
+        <div class="neon-title-container">
+            <div class="subtitle">POLICE INVESTIGATION DATABASE // GANGNAM HQ</div>
+            <h1 class="glitch-title" data-text="CASE 001: SEOUL MYSTERY">CASE 001<br><span class="highlight">SEOUL MYSTERY</span></h1>
+            <p class="tagline">"Hər bir ipucu bir hekayə danışır. Hər bir yalan həqiqəti gizlədir."</p>
+        </div>
+        
+        <div class="menu-actions">
+            <button id="btn-start" class="btn btn-primary"><span class="icon">🔍</span> İSTİNTAQA BAŞLA</button>
+            <button id="btn-how" class="btn btn-secondary"><span class="icon">📋</span> OYUN QAYDALARI</button>
+        </div>
+        
+        <div class="case-teaser">
+            <div class="badge">TƏCİLİ MƏLUMAT</div>
+            <p><strong>05 Noyabr 2026, 23:47:</strong> Şəbəkə texnologiyaları üzrə milyarder Kang Min-jun Gangnamdakı şəxsi ofisindən sirli şəkildə qeyb olub. Otaq daxildən kilitlənib.</p>
+        </div>
+    </section>
+
+    <!-- DASHBOARD WORKSPACE -->
+    <section id="dashboard" class="screen">
+        <header class="top-bar">
+            <div class="case-meta">
+                <span class="meta-item"><strong>CASE:</strong> #001-SEOUL</span>
+                <span class="meta-item"><strong>MƏKAN:</strong> Gangnam, Seul</span>
+                <span class="meta-item"><strong>ZAMAN:</strong> 23:47</span>
+            </div>
+            <div class="stat-tracker">
+                <span class="badge-counter">SÜBÜTLAR: <strong id="evidence-count">0/12</strong></span>
+                <span class="badge-counter">XP: <strong id="score-display">1000</strong></span>
+            </div>
+            <button id="btn-sound-toggle" class="btn-icon">🔊 SƏS</button>
+        </header>
+
+        <div class="app-layout">
+            <!-- NAV SIDEBAR -->
+            <nav class="sidebar">
+                <div class="nav-title">İSTİNTAQ PANOLARI</div>
+                <button class="nav-btn active" data-tab="overview"><span class="nav-icon">📊</span> Ümumi Baxış</button>
+                <button class="nav-btn" data-tab="crime-scene"><span class="nav-icon">📸</span> Hadisə Yeri</button>
+                <button class="nav-btn" data-tab="suspects"><span class="nav-icon">👥</span> Şübhəlilər</button>
+                <button class="nav-btn" data-tab="interviews"><span class="nav-icon">🎙️</span> Dindirmələr</button>
+                <button class="nav-btn" data-tab="evidence-room"><span class="nav-icon">📑</span> Sübüt Lövhəsi</button>
+                <button class="nav-btn" data-tab="minigames"><span class="nav-icon">🧩</span> Pazzllar və Analiz</button>
+                <button class="nav-btn highlight-accuse" data-tab="accusation"><span class="nav-icon">⚖️</span> YEKUN İTTİHAM</button>
+            </nav>
+
+            <!-- MAIN WORKSPACE VIEWS -->
+            <main class="content-area">
+                <!-- TAB 1: OVERVIEW -->
+                <div id="tab-overview" class="tab-content active">
+                    <h2>İstintaq İcmalı: Kang Min-jun-un İtməsi</h2>
+                    <div class="grid-2">
+                        <div class="card card-red">
+                            <h3>⚠️ Hadisə Haqqında Raport</h3>
+                            <p>Kang Min-jun (38 yaş, "Nexus Tech" şirkətinin təsisçisi) noyabrın 5-də saat 23:47-də özünün 14-cü mərtəbədəki ofisindən yoxa çıxıb. Qapı və pəncərələr daxildən kilitli olub. Kamera yazılarında 12 dəqiqəlik kəsinti mövcuddur.</p>
+                        </div>
+                        <div class="card">
+                            <h3>🎯 Əsas Məqsədlər</h3>
+                            <ul class="task-list">
+                                <li>[ ] Hadisə yerindəki 8 kritik nöqtəni araşdırın.</li>
+                                <li>[ ] 4 şübhəlinin alibisini dindirmələrlə yoxlayın.</li>
+                                <li>[ ] Şifrələnmiş mesajı və kamera yazısını bərpa edin.</li>
+                                <li>[ ] Təqsirkarı və onun motivini müəyyən edərək yekun ittiham irəli sürün.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: CRIME SCENE -->
+                <div id="tab-crime-scene" class="tab-content">
+                    <h2>İnteraktiv Hadisə Yeri: Gangnam Ofisi</h2>
+                    <p class="hint">Əşyaları araşdırmaq və sübut toplamaq üçün ofisdəki qırmızı nöqtələrə klikləyin:</p>
+                    
+                    <div class="crime-scene-viewport">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" alt="Office Scene" class="scene-bg">
+                        
+                        <!-- HOTSPOTS -->
+                        <div class="hotspot" style="top: 65%; left: 35%;" data-item="phone">📱</div>
+                        <div class="hotspot" style="top: 72%; left: 48%;" data-item="coffee">☕</div>
+                        <div class="hotspot" style="top: 55%; left: 50%;" data-item="laptop">💻</div>
+                        <div class="hotspot" style="top: 20%; left: 75%;" data-item="clock">🕒</div>
+                        <div class="hotspot" style="top: 15%; left: 20%;" data-item="camera">🎥</div>
+                        <div class="hotspot" style="top: 40%; left: 85%;" data-item="window">🪟</div>
+                        <div class="hotspot" style="top: 60%; left: 62%;" data-item="note">📝</div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: SUSPECTS -->
+                <div id="tab-suspects" class="tab-content">
+                    <h2>Şübhəli Şəxslərin Faylları</h2>
+                    <div class="suspects-grid" id="suspects-container">
+                        <!-- JS populated -->
+                    </div>
+                </div>
+
+                <!-- TAB 4: INTERVIEWS -->
+                <div id="tab-interviews" class="tab-content">
+                    <h2>Şahid və Şübhəli Dindirmələri</h2>
+                    <div class="interview-layout">
+                        <div class="witness-selector" id="witness-list">
+                            <!-- JS populated -->
+                        </div>
+                        <div class="dialogue-box" id="dialogue-container">
+                            <p class="select-prompt">Dindirməyə başlamaq üçün soldan bir şəxs seçin.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 5: EVIDENCE ROOM -->
+                <div id="tab-evidence-room" class="tab-content">
+                    <h2>Sübut Lövhəsi (Pin-Board)</h2>
+                    <p class="hint">Toplanmış sübutların siyahısı və aralarındakı əlaqələr:</p>
+                    <div class="evidence-grid" id="evidence-container">
+                        <!-- JS populated -->
+                    </div>
+                </div>
+
+                <!-- TAB 6: MINIGAMES -->
+                <div id="tab-minigames" class="tab-content">
+                    <h2>Kriminalistik Analiz və Pazzllar</h2>
+                    <div class="puzzle-container">
+                        <div class="card">
+                            <h3>🔐 Şifrələnmiş Kodun Açılması (Cipher)</h3>
+                            <p>Kang Min-jun-un telefonundan tapılan şifrəli mesaj:</p>
+                            <div class="cipher-box">"45-12-89-01 // PROJECT-NEXUS-DRAIN"</div>
+                            <input type="text" id="cipher-input" placeholder="Dəşifrə edilmiş kodu daxil edin (Hərflər/Rəqəmlər)...">
+                            <button id="btn-check-cipher" class="btn btn-primary" style="margin-top:10px;">ŞİFRƏNİ YOXLAYIN</button>
+                            <div id="cipher-feedback" class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 7: ACCUSATION -->
+                <div id="tab-accusation" class="tab-content">
+                    <h2>Məhkəmə Öncesi Yekun İttiham İrəli Sürün</h2>
+                    <div class="card card-red">
+                        <form id="accusation-form">
+                            <label>1. Əsas Təqsirkar Kimdir?</label>
+                            <select id="accuse-suspect" required>
+                                <option value="">-- Şübhəlini Seçin --</option>
+                                <option value="kim">Kim Seo-yeon (Şəxsi Köməkçi)</option>
+                                <option value="park">Park Ji-hoon (Biznes Şəriki)</option>
+                                <option value="lee">Lee Hye-jin (Jurnalist)</option>
+                                <option value="choi">Choi Dae-hyun (Təhlükəsizlik Rəisi)</option>
+                            </select>
+
+                            <label>2. Əsas Cinayət Motivi Nə İdi?</label>
+                            <select id="accuse-motive" required>
+                                <option value="">-- Motivi Seçin --</option>
+                                <option value="money">Maliyyə mənimsəməsi və gizli kripto-aktivlər</option>
+                                <option value="revenge">Şəxsi qisas və tərəfdaşlıq xəyanəti</option>
+                                <option value="journalism">Skandal xəbər hazırlamaq</option>
+                            </select>
+
+                            <label>3. Kang Min-jun Hazırda Haradadır?</label>
+                            <select id="accuse-location" required>
+                                <option value="">-- Məkanı Seçin --</option>
+                                <option value="basement">Incheon Limanındakı Gizli Anbarda</option>
+                                <option value="safehouse">Gangnamdakı Yeraltı Bunker-də</option>
+                                <option value="abroad">Xarici ölkəyə qaçıb</option>
+                            </select>
+
+                            <button type="submit" class="btn btn-primary btn-large" style="margin-top:20px;">HƏKMİ VƏ İTTİHAMI TƏSDİQLƏ</button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- MODALS -->
+    <div id="modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-title">Sübut Analizi</h3>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
